@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MapPin, Clock, User, CheckCircle, Navigation } from "lucide-react";
-import { SOSAlert } from "../types";
+import { SOSAlert, Volunteer } from "../types";
 import AlertCard from "../components/AlertCard";
 import MapView from "../components/MapView";
 import {
@@ -11,14 +11,13 @@ import {
   getDisasterEmoji,
   formatWaiting,
 } from "../utils/priority";
-import { MOCK_VOLUNTEERS } from "../data/mockData";
-
 interface VolunteerViewProps {
   alerts: SOSAlert[];
+  volunteers: Volunteer[];
   onAssign: (alertId: string) => void;
 }
 
-export default function VolunteerView({ alerts, onAssign }: VolunteerViewProps) {
+export default function VolunteerView({ alerts, volunteers, onAssign }: VolunteerViewProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filterStatus, setFilterStatus] = useState<"all" | "pending" | "assigned">("all");
 
@@ -86,7 +85,7 @@ export default function VolunteerView({ alerts, onAssign }: VolunteerViewProps) 
         <div className="flex-1 min-h-[280px]">
           <MapView
             alerts={alerts}
-            volunteers={MOCK_VOLUNTEERS}
+            volunteers={volunteers}
             selectedId={selectedId}
             onSelectAlert={(id) => setSelectedId(id === selectedId ? null : id)}
           />

@@ -32,5 +32,5 @@ export interface Volunteer {
   assignedAlerts: string[];
 }
 
-export type ViewMode = "victim" | "volunteer" | "dashboard";
+export type ViewMode = "home" | "victim" | "volunteer" | "dashboard";
 export type PriorityLevel = "critical" | "high" | "medium" | "low";

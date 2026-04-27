@@ -1,19 +1,19 @@
-import { SOSAlert } from "../types";
+import { SOSAlert, Volunteer } from "../types";
 import AlertCard from "../components/AlertCard";
 import MapView from "../components/MapView";
 import {
   sortAlertsByPriority,
   getDisasterEmoji,
 } from "../utils/priority";
-import { MOCK_VOLUNTEERS } from "../data/mockData";
 import { useState } from "react";
 import { Activity, TrendingUp, Users, Zap } from "lucide-react";
 
 interface DashboardViewProps {
   alerts: SOSAlert[];
+  volunteers: Volunteer[];
 }
 
-export default function DashboardView({ alerts }: DashboardViewProps) {
+export default function DashboardView({ alerts, volunteers }: DashboardViewProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const sorted = sortAlertsByPriority(alerts);
@@ -95,7 +95,7 @@ export default function DashboardView({ alerts }: DashboardViewProps) {
           <div className="h-[300px]">
             <MapView
               alerts={alerts}
-              volunteers={MOCK_VOLUNTEERS}
+              volunteers={volunteers}
               selectedId={selectedId}
               onSelectAlert={(id) => setSelectedId(id === selectedId ? null : id)}
             />
@@ -108,7 +108,7 @@ export default function DashboardView({ alerts }: DashboardViewProps) {
               Rescue Teams
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {MOCK_VOLUNTEERS.map((vol) => (
+              {volunteers.map((vol) => (
                 <div
                   key={vol.id}
                   className="bg-gray-900/60 border border-gray-700/50 rounded-xl p-3 flex items-center gap-3"

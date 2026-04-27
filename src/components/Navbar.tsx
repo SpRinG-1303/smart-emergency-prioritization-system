@@ -1,4 +1,4 @@
-import { Shield, Radio, Bell } from "lucide-react";
+import { Shield, Radio, Bell, Home } from "lucide-react";
 import { ViewMode } from "../types";
 
 interface NavbarProps {
@@ -30,7 +30,17 @@ export default function Navbar({ view, setView, alertCount }: NavbarProps) {
 
         {/* View Toggle */}
         <div className="flex items-center gap-1 bg-gray-900 rounded-xl p-1 border border-gray-800">
-          {(["victim", "volunteer", "dashboard"] as ViewMode[]).map((v) => (
+          <button
+            onClick={() => setView("home")}
+            className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+              view === "home"
+                ? "bg-red-600 text-white shadow-lg shadow-red-900/50"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            <Home className="w-4 h-4" />
+          </button>
+          {(["victim", "volunteer", "dashboard"] as const).map((v) => (
             <button
               key={v}
               onClick={() => setView(v)}
