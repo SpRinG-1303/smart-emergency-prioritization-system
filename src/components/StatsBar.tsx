@@ -1,13 +1,13 @@
 import { AlertTriangle, CheckCircle, Clock, Users } from "lucide-react";
-import { STATS } from "../data/mockData";
 
 interface StatsBarProps {
   pendingCount: number;
   assignedCount: number;
   completedCount: number;
+  volunteersCount: number;
 }
 
-export default function StatsBar({ pendingCount, assignedCount, completedCount }: StatsBarProps) {
+export default function StatsBar({ pendingCount, assignedCount, completedCount, volunteersCount }: StatsBarProps) {
   const stats = [
     {
       label: "Active SOS",
@@ -25,29 +25,22 @@ export default function StatsBar({ pendingCount, assignedCount, completedCount }
     },
     {
       label: "Rescued",
-      value: completedCount + STATS.livesSaved,
+      value: completedCount,
       icon: <CheckCircle className="w-4 h-4" />,
       color: "text-green-400",
       bg: "bg-green-500/10 border-green-500/30",
     },
     {
       label: "Volunteers",
-      value: STATS.volunteersActive,
+      value: volunteersCount,
       icon: <Users className="w-4 h-4" />,
       color: "text-blue-400",
       bg: "bg-blue-500/10 border-blue-500/30",
     },
-    {
-      label: "Avg Response",
-      value: STATS.avgResponseTime,
-      icon: <Clock className="w-4 h-4" />,
-      color: "text-purple-400",
-      bg: "bg-purple-500/10 border-purple-500/30",
-    },
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {stats.map((s) => (
         <div
           key={s.label}

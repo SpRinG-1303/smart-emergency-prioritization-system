@@ -6,9 +6,10 @@ interface HomeViewProps {
   pendingCount: number;
   assignedCount: number;
   completedCount: number;
+  volunteersCount: number;
 }
 
-export default function HomeView({ setView, pendingCount, assignedCount, completedCount }: HomeViewProps) {
+export default function HomeView({ setView, pendingCount, assignedCount, completedCount, volunteersCount }: HomeViewProps) {
   return (
     <div className="max-w-4xl mx-auto space-y-10 py-6">
       {/* Hero */}
@@ -46,7 +47,7 @@ export default function HomeView({ setView, pendingCount, assignedCount, complet
           <div className="w-px h-6 bg-gray-700" />
           <div className="flex items-center gap-2 text-blue-400">
             <Users className="w-4 h-4" />
-            <span className="font-black text-xl">4</span>
+            <span className="font-black text-xl">{volunteersCount}</span>
             <span className="text-gray-500 text-sm">Teams Active</span>
           </div>
         </div>

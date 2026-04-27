@@ -111,6 +111,7 @@ export default function App() {
                 pendingCount={pendingAlerts.length}
                 assignedCount={assignedAlerts.length}
                 completedCount={completedAlerts.length}
+                volunteersCount={volunteers.length}
               />
             </div>
           </>
@@ -122,6 +123,7 @@ export default function App() {
             pendingCount={pendingAlerts.length}
             assignedCount={assignedAlerts.length}
             completedCount={completedAlerts.length}
+            volunteersCount={volunteers.length}
           />
         )}
         {view === "victim" && <SOSView onSubmit={handleSOSSubmit} />}
